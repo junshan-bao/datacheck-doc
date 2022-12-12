@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Datacheck API &mdash; datacheck 0.1.3 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+        <script src="_static/design-tabs.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Configuration" href="configuration.html" />
+    <link rel="prev" title="Quick Start" href="quick_start.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> datacheck
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Quick Start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Datacheck API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-datacheck.async_utils">datacheck.async_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datacheck.base">datacheck.base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datacheck.connection">datacheck.connection module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datacheck.datachecker">datacheck.datachecker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datacheck.sql_generator">datacheck.sql_generator module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datacheck.utils">datacheck.utils module</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">CHANGELOG</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">datacheck</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Datacheck API</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/datacheck.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="datacheck-api">
+<h1>Datacheck API<a class="headerlink" href="#datacheck-api" title="Permalink to this headline"></a></h1>
+<section id="module-datacheck.async_utils">
+<span id="datacheck-async-utils-module"></span><h2>datacheck.async_utils module<a class="headerlink" href="#module-datacheck.async_utils" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="datacheck.async_utils.ThreadPool">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datacheck.async_utils.</span></span><span class="sig-name descname"><span class="pre">ThreadPool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datacheck.async_utils.ThreadPool" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A thread pool with semaphore limitation</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datacheck.async_utils.ThreadPool.run">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_callable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">_asyncio.Future</span></span></span><a class="headerlink" href="#datacheck.async_utils.ThreadPool.run" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>_callable</strong> (<em>Callable</em>) – a callable function</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>asyncio.Future object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datacheck.async_utils.ThreadWorker">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datacheck.async_utils.</span></span><span class="sig-name descname"><span class="pre">ThreadWorker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datacheck.async_utils.ThreadWorker" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A decorator class for converting function to async function</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datacheck.async_utils.in_notebook">
+<span class="sig-prename descclassname"><span class="pre">datacheck.async_utils.</span></span><span class="sig-name descname"><span class="pre">in_notebook</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#datacheck.async_utils.in_notebook" title="Permalink to this definition"></a></dt>
+<dd><p>Check current script if it is running in jupyter notebook
+:return bool: True if the program is running in notebook.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datacheck.async_utils.run_with_coro">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datacheck.async_utils.</span></span><span class="sig-name descname"><span class="pre">run_with_coro</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">asyncio.events.AbstractEventLoop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">60</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datacheck.async_utils.run_with_coro" title="Permalink to this definition"></a></dt>
+<dd><p>Execute concurrentable function by coroutines</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>loop</strong> – current asyncio event loop</p></li>
+<li><p><strong>func</strong> – function</p></li>
+<li><p><strong>params</strong> – a list of param dict used by function</p></li>
+<li><p><strong>n_jobs</strong> – The number of coroutines the function used</p></li>
+<li><p><strong>timeout</strong> – max runtime limitation per function</p></li>
+<li><p><strong>retry</strong> – times of retry triggered by the timeout</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a list of result generated by each function</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-datacheck.base">
+<span id="datacheck-base-module"></span><h2>datacheck.base module<a class="headerlink" href="#module-datacheck.base" title="Permalink to this headline"></a></h2>
+</section>
+<section id="module-datacheck.connection">
+<span id="datacheck-connection-module"></span><h2>datacheck.connection module<a class="headerlink" href="#module-datacheck.connection" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="datacheck.connection.APTRedshiftConnector">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datacheck.connection.</span></span><span class="sig-name descname"><span class="pre">APTRedshiftConnector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hook</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datacheck.connection.APTRedshiftConnector" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datacheck.connection.Connector" title="datacheck.connection.Connector"><code class="xref py py-class docutils literal notranslate"><span class="pre">datacheck.connection.Connector</span></code></a></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="datacheck.connection.APTRedshiftConnector.database">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">database</span></span><a class="headerlink" href="#datacheck.connection.APTRedshiftConnector.database" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datacheck.connection.APTRedshiftConnector.get_pandas_df">
+<span class="sig-name descname"><span class="pre">get_pandas_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">script</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datacheck.connection.APTRedshiftConnector.get_pandas_df" title="Permalink to this definition"></a></dt>
+<dd><p>Run sql script</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="datacheck.connection.APTRedshiftConnector.hook">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hook</span></span><a class="headerlink" href="#datacheck.connection.APTRedshiftConnector.hook" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datacheck.connection.APTRedshiftConnector.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">script</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datacheck.connection.APTRedshiftConnector.run" title="Permalink to this definition"></a></dt>
+<dd><p>Runs a command or a list of commands. Pass a list of sql statements
+to the sql parameter to get them to execute sequentially</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datacheck.connection.AirflowConnector">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datacheck.connection.</span></span><span class="sig-name descname"><span class="pre">AirflowConnector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hook</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conn_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datacheck.connection.AirflowConnector" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datacheck.connection.Connector" title="datacheck.connection.Connector"><code class="xref py py-class docutils literal notranslate"><span class="pre">datacheck.connection.Connector</span></code></a></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="datacheck.connection.AirflowConnector.conn_id">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">conn_id</span></span><a class="headerlink" href="#datacheck.connection.AirflowConnector.conn_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="datacheck.connection.AirflowConnector.connection">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">connection</span></span><a class="headerlink" href="#datacheck.connection.AirflowConnector.connection" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="datacheck.connection.AirflowConnector.database">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">database</span></span><a class="headerlink" href="#datacheck.connection.AirflowConnector.database" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datacheck.connection.AirflowConnector.get_pandas_df">
+<span class="sig-name descname"><span class="pre">get_pandas_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">script</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datacheck.connection.AirflowConnector.get_pandas_df" title="Permalink to this definition"></a></dt>
+<dd><p>Run sql script</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="datacheck.connection.AirflowConnector.hook">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hook</span></span><a class="headerlink" href="#datacheck.connection.AirflowConnector.hook" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datacheck.connection.AirflowConnector.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">script</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autocommit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datacheck.connection.AirflowConnector.run" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>script</strong> – </p></li>
+<li><p><strong>autocommit</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datacheck.connection.Connector">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datacheck.connection.</span></span><span class="sig-name descname"><span class="pre">Connector</span></span><a class="headerlink" href="#datacheck.connection.Connector" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datacheck.connection.Connector.get_pandas_df">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_pandas_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">script</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datacheck.connection.Connector.get_pandas_df" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datacheck.connection.Connector.run">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">script</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datacheck.connection.Connector.run" title="Permalink to this definition"></a></dt>
+<dd><p>Runs a command or a list of commands. Pass a list of sql statements
+to the sql parameter to get them to execute sequentially</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-datacheck.datachecker">
+<span id="datacheck-datachecker-module"></span><h2>datacheck.datachecker module<a class="headerlink" href="#module-datacheck.datachecker" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="datacheck.datachecker.DataChecker">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datacheck.datachecker.</span></span><span class="sig-name descname"><span class="pre">DataChecker</span></span><a class="headerlink" href="#datacheck.datachecker.DataChecker" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class provides functionalities to conduct validation of data
+located in databases.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datacheck.datachecker.DataChecker.check">
+<span class="sig-name descname"><span class="pre">check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#datacheck.datachecker.DataChecker.check" title="Permalink to this definition"></a></dt>
+<dd><p>Perform validation based on config</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> (<em>dict</em>) – parsed and preprocessed configuration</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="datacheck.datachecker.DataChecker.default_ops">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">default_ops</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span></em><a class="headerlink" href="#datacheck.datachecker.DataChecker.default_ops" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datacheck.datachecker.DataChecker.get_connector">
+<span class="sig-name descname"><span class="pre">get_connector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="headerlink" href="#datacheck.datachecker.DataChecker.get_connector" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datacheck.datachecker.DataChecker.multi_check">
+<span class="sig-name descname"><span class="pre">multi_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">configs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">60.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#datacheck.datachecker.DataChecker.multi_check" title="Permalink to this definition"></a></dt>
+<dd><p>Perform validation based on list of configs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>configs</strong> (<em>list</em><em>[</em><em>dict</em><em>]</em>) – parsed and preprocessed configurations</p></li>
+<li><p><strong>n_jobs</strong> – The number of coroutines the function used.
+The number is limited by the user permissions on the database side.
+If n_jobs &gt; 1, the function will use coroutine to execute.
+If n_job = 1, it will use just one thread, default is 1.</p></li>
+<li><p><strong>retry</strong> – times of retry triggered by the timeout</p></li>
+<li><p><strong>timeout</strong> – max runtime limitation per check when function uses coroutines</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datacheck.datachecker.DataChecker.none_dataframe_with_time">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">none_dataframe_with_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#datacheck.datachecker.DataChecker.none_dataframe_with_time" title="Permalink to this definition"></a></dt>
+<dd><p>Return a blank dataframe contains columns according to check result.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datacheck.datachecker.DataChecker.register_connector">
+<span class="sig-name descname"><span class="pre">register_connector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datacheck.datachecker.DataChecker.register_connector" title="Permalink to this definition"></a></dt>
+<dd><p>Register connector for database if not previously registered</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>connector</strong> – connection.Connector object</p></li>
+<li><p><strong>database</strong> (<em>str</em>) – <cite>vega</cite>, <cite>redshift</cite> and <cite>snowflake</cite> are supported currently</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="datacheck.datachecker.DataChecker.supported_database">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">supported_database</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Set</span></em><a class="headerlink" href="#datacheck.datachecker.DataChecker.supported_database" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-datacheck.sql_generator">
+<span id="datacheck-sql-generator-module"></span><h2>datacheck.sql_generator module<a class="headerlink" href="#module-datacheck.sql_generator" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="datacheck.sql_generator.CheckDuplicate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datacheck.sql_generator.</span></span><span class="sig-name descname"><span class="pre">CheckDuplicate</span></span><a class="headerlink" href="#datacheck.sql_generator.CheckDuplicate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datacheck.sql_generator.SqlGenerator" title="datacheck.sql_generator.SqlGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">datacheck.sql_generator.SqlGenerator</span></code></a></p>
+<p>Inherited class to generate sql of checking the row if it is duplicated.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datacheck.sql_generator.CheckDuplicate.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datacheck.base._Table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ops</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#datacheck.sql_generator.CheckDuplicate.generate" title="Permalink to this definition"></a></dt>
+<dd><p>An abstract method implement in children class</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datacheck.sql_generator.ComputeStats">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datacheck.sql_generator.</span></span><span class="sig-name descname"><span class="pre">ComputeStats</span></span><a class="headerlink" href="#datacheck.sql_generator.ComputeStats" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datacheck.sql_generator.SqlGenerator" title="datacheck.sql_generator.SqlGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">datacheck.sql_generator.SqlGenerator</span></code></a></p>
+<p>Inherited class to generate sql of computing statistics.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datacheck.sql_generator.ComputeStats.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datacheck.base._Table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ops</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#datacheck.sql_generator.ComputeStats.generate" title="Permalink to this definition"></a></dt>
+<dd><p>An abstract method implement in children class</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datacheck.sql_generator.CountDistinctNum">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datacheck.sql_generator.</span></span><span class="sig-name descname"><span class="pre">CountDistinctNum</span></span><a class="headerlink" href="#datacheck.sql_generator.CountDistinctNum" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datacheck.sql_generator.SqlGenerator" title="datacheck.sql_generator.SqlGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">datacheck.sql_generator.SqlGenerator</span></code></a></p>
+<p>Inherited class to generate sql of counting the number of distinct value in target columns.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datacheck.sql_generator.CountDistinctNum.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datacheck.base._Table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ops</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#datacheck.sql_generator.CountDistinctNum.generate" title="Permalink to this definition"></a></dt>
+<dd><p>An abstract method implement in children class</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datacheck.sql_generator.CountMissingRate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datacheck.sql_generator.</span></span><span class="sig-name descname"><span class="pre">CountMissingRate</span></span><a class="headerlink" href="#datacheck.sql_generator.CountMissingRate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datacheck.sql_generator.SqlGenerator" title="datacheck.sql_generator.SqlGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">datacheck.sql_generator.SqlGenerator</span></code></a></p>
+<p>Inherited class to generate sql of counting the missing rate of the target columns.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datacheck.sql_generator.CountMissingRate.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datacheck.base._Table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ops</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#datacheck.sql_generator.CountMissingRate.generate" title="Permalink to this definition"></a></dt>
+<dd><p>An abstract method implement in children class</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datacheck.sql_generator.CountRowNum">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datacheck.sql_generator.</span></span><span class="sig-name descname"><span class="pre">CountRowNum</span></span><a class="headerlink" href="#datacheck.sql_generator.CountRowNum" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datacheck.sql_generator.SqlGenerator" title="datacheck.sql_generator.SqlGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">datacheck.sql_generator.SqlGenerator</span></code></a></p>
+<p>Inherited class to generate sql of counting the number of row.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datacheck.sql_generator.CountRowNum.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datacheck.base._Table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ops</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#datacheck.sql_generator.CountRowNum.generate" title="Permalink to this definition"></a></dt>
+<dd><p>An abstract method implement in children class</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datacheck.sql_generator.CreateFilteredTmpTable">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datacheck.sql_generator.</span></span><span class="sig-name descname"><span class="pre">CreateFilteredTmpTable</span></span><a class="headerlink" href="#datacheck.sql_generator.CreateFilteredTmpTable" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datacheck.sql_generator.SqlGenerator" title="datacheck.sql_generator.SqlGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">datacheck.sql_generator.SqlGenerator</span></code></a></p>
+<p>Inherited class to generate sql of sampled table based on time-based filtering logic.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datacheck.sql_generator.CreateFilteredTmpTable.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datacheck.base._Table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ops</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#datacheck.sql_generator.CreateFilteredTmpTable.generate" title="Permalink to this definition"></a></dt>
+<dd><p>An abstract method implement in children class</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datacheck.sql_generator.SqlGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datacheck.sql_generator.</span></span><span class="sig-name descname"><span class="pre">SqlGenerator</span></span><a class="headerlink" href="#datacheck.sql_generator.SqlGenerator" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A mixin class for generating different checking operation sql.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datacheck.sql_generator.SqlGenerator.filter_col">
+<span class="sig-name descname"><span class="pre">filter_col</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datacheck.base._Table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_types</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#datacheck.sql_generator.SqlGenerator.filter_col" title="Permalink to this definition"></a></dt>
+<dd><p>filter valid and applicable columns for different check operations.
+:param _Table table: _Table instance
+:param List target_cols: the columns need to be filtered
+:param List filter_types: the types operations need
+:return: a list of filtered columns</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datacheck.sql_generator.SqlGenerator.generate">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datacheck.base._Table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ops</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#datacheck.sql_generator.SqlGenerator.generate" title="Permalink to this definition"></a></dt>
+<dd><p>An abstract method implement in children class</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="datacheck.sql_generator.SqlGenerator.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#datacheck.sql_generator.SqlGenerator.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="datacheck.sql_generator.SqlGenerator.sql_template">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sql_template</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#datacheck.sql_generator.SqlGenerator.sql_template" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="datacheck.sql_generator.SqlGenerator.sql_template_root">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sql_template_root</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#datacheck.sql_generator.SqlGenerator.sql_template_root" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datacheck.sql_generator.get_sql_generator_by_name">
+<span class="sig-prename descclassname"><span class="pre">datacheck.sql_generator.</span></span><span class="sig-name descname"><span class="pre">get_sql_generator_by_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#datacheck.sql_generator.SqlGenerator" title="datacheck.sql_generator.SqlGenerator"><span class="pre">datacheck.sql_generator.SqlGenerator</span></a></span></span><a class="headerlink" href="#datacheck.sql_generator.get_sql_generator_by_name" title="Permalink to this definition"></a></dt>
+<dd><p>get sql_generator by generator name includes <cite>create_filtered_tmp_table</cite>,
+<cite>count_distinct_num</cite>, <cite>count_row_num</cite>, <cite>compute_stats</cite>, <cite>count_missing_rate</cite>
+and <cite>check_duplicate</cite>
+:param name: operation name
+:return: sql generator (class instance)</p>
+</dd></dl>
+
+</section>
+<section id="module-datacheck.utils">
+<span id="datacheck-utils-module"></span><h2>datacheck.utils module<a class="headerlink" href="#module-datacheck.utils" title="Permalink to this headline"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="datacheck.utils.classify_column_type">
+<span class="sig-prename descclassname"><span class="pre">datacheck.utils.</span></span><span class="sig-name descname"><span class="pre">classify_column_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#datacheck.utils.classify_column_type" title="Permalink to this definition"></a></dt>
+<dd><p>Classify column type into categorical, numerical, and date</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>database</strong> – string type, three choices <cite>snowflake</cite>, <cite>redshift</cite> and <cite>vega</cite></p></li>
+<li><p><strong>col_type</strong> – string type, the type of database column</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>string type, type category</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datacheck.utils.combine_sql_script">
+<span class="sig-prename descclassname"><span class="pre">datacheck.utils.</span></span><span class="sig-name descname"><span class="pre">combine_sql_script</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sql_script_acc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#datacheck.utils.combine_sql_script" title="Permalink to this definition"></a></dt>
+<dd><p>Combine sql script list to single sql script
+:param list sql_script_acc:
+:return str: combined sql</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datacheck.utils.df_equals">
+<span class="sig-prename descclassname"><span class="pre">datacheck.utils.</span></span><span class="sig-name descname"><span class="pre">df_equals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#datacheck.utils.df_equals" title="Permalink to this definition"></a></dt>
+<dd><p>check two pandas dataframe if they are equal
+:param df1: source pandas dataframe
+:param df2: target pandas dataframe
+:return: boolean result</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datacheck.utils.generate_sql_from_template">
+<span class="sig-prename descclassname"><span class="pre">datacheck.utils.</span></span><span class="sig-name descname"><span class="pre">generate_sql_from_template</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sql_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#datacheck.utils.generate_sql_from_template" title="Permalink to this definition"></a></dt>
+<dd><p>Generate sql script based on template and kwargs
+:param str sql_template: sql template
+:param kwargs: keyword arguments
+:return: sql script</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datacheck.utils.generate_union_all_sql_script">
+<span class="sig-prename descclassname"><span class="pre">datacheck.utils.</span></span><span class="sig-name descname"><span class="pre">generate_union_all_sql_script</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scripts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#datacheck.utils.generate_union_all_sql_script" title="Permalink to this definition"></a></dt>
+<dd><p>Create union all script
+:param list scripts:
+:return str: combined sql</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datacheck.utils.load_json">
+<span class="sig-prename descclassname"><span class="pre">datacheck.utils.</span></span><span class="sig-name descname"><span class="pre">load_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#datacheck.utils.load_json" title="Permalink to this definition"></a></dt>
+<dd><p>covert string to json
+:param s: input string
+:return: json dict</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="quick_start.html" class="btn btn-neutral float-left" title="Quick Start" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="configuration.html" class="btn btn-neutral float-right" title="Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Sparkle, Junshan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

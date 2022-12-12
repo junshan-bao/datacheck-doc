@@ -1,0 +1,58 @@
+Datacheck API
+=================
+
+
+
+datacheck.async\_utils module
+-----------------------------
+
+.. automodule:: datacheck.async_utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+datacheck.base module
+---------------------
+
+.. automodule:: datacheck.base
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+datacheck.connection module
+---------------------------
+
+.. automodule:: datacheck.connection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+datacheck.datachecker module
+----------------------------
+
+.. automodule:: datacheck.datachecker
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+datacheck.sql\_generator module
+-------------------------------
+
+.. automodule:: datacheck.sql_generator
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+datacheck.utils module
+----------------------
+
+.. automodule:: datacheck.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

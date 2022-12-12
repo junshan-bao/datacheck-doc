@@ -1,0 +1,50 @@
+.. datacheck documentation master file, created by
+   sphinx-quickstart on Wed Dec  7 23:36:39 2022.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Datacheck |version|
+============================================
+
+Datacheck is a tool for checking the differences before and after the data migration that provides following features:
+
+* Count number of rows
+* Count number of distinct values for non-numeric columns
+* Support validation of full table or sampled table based on time-based filtering logic
+* Check if column names and types match
+* Compute min, max, avg, sum for numeric columns/min max for date columns
+* Count missing rate of columns
+* Check if there exist duplicate records given distinct key(s)
+* [WIP] Check the detailed differences
+
+.. toctree::
+   :maxdepth: 4
+   :caption: Quick Start
+
+   quick_start
+
+.. toctree::
+   :maxdepth: 4
+   :caption: API
+
+   datacheck
+
+.. toctree::
+   :maxdepth: 4
+   :caption: Configuration
+
+   configuration
+
+.. toctree::
+   :maxdepth: 4
+   :caption: Appendix
+
+   changelog
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

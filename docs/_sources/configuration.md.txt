@@ -1,0 +1,88 @@
+# Configuration
+
+The main function of this program is ``DataChecker.multi_check``,
+and the required input is the list of check configuration
+
+The configuration is a json-like data, the example is below:
+
+## Example
+```json
+{
+  "target_table": {
+    "database": "vega",
+    "name": "red.raw_c_e_consumer_profile_change"
+  },
+  "source_table": {
+    "database": "redshift",
+    "name": "red.raw_c_e_consumer_profile_change"
+  },
+  "filter": {
+    "time_col": "par_process_date",
+    "start": "'2022-10-01'",
+    "end": "'2022-10-02'"
+  },
+  "ops": {
+    "check_column_type": {},
+    "count_row_num": {},
+    "count_distinct_num": {
+      "target_cols": [
+        "event_type",
+        "device_id"
+      ]
+    },
+    "compute_stats": {
+      "target_cols": [
+        "gateway_response",
+        "gdp_processed_datetime",
+        "event_type",
+        "event_info_correlation_id"
+      ],
+      "target_ops": [
+        "max",
+        "min",
+        "avg",
+        "sum"
+      ]
+    },
+    "count_missing_rate": {
+      "target_cols": [
+        "gateway_response",
+        "event_type"
+      ]
+    },
+    "check_duplicate": {
+      "target_cols": [
+        "gateway_response",
+        "event_type"
+      ]
+    }
+  }
+}
+```
+
+## Explanation
+The explanation of items in json data is below:
+
+- target_table [Required] : The target migration table
+    - database [Required] : The migration database name
+    - name [Required] : The migration table name with schema
+- source_table [Required] : The target migration table
+    - database [Required] : The migration database name
+    - name [Required] : The migration table name with schema
+- filter [Optional] : The filter for sampling the table
+    - time_col [Required] : The date type column name for filtering
+    - start [Required] : The start time of filtering
+    - end [Required] : The end time of filtering
+- ops [Optional] : The check operation. If you do not fill in any value, the program will just check the column type as
+  its default check
+    - check_column_type [Optional] : Default operation, do not need to fill in
+    - count_row_num [Optional] : Count the number of row
+    - count_distinct_num [Optional] : Count the distinct number of value in target column
+      - target_cols [Optional] : Columns you want to check. If you do not fill in any value, the program will check all columns in the table 
+    - check_duplicate [Optional] : Check the duplicate with given distinct keys
+      - target_cols [Optional] : Distinct keys. If you do not fill in any value, the program will check the entire row
+    - count_missing_rate [Optional] : Count the missing rate of columns
+      - target_cols [Optional] : Columns you want to count. If you do not fill in any value, the program will count all columns in the table 
+    - compute_stats [Optional] : Computing statistics for columns
+      - target_cols [Optional] : Columns you want to compute. If you do not fill in any value, the program will compute all columns in the table 
+      - target_ops [Optional] : The check types, now support `min`, `max`, `avg`, `sum` for numerical columns, and `min`, `max` for date columns

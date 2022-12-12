@@ -1,0 +1,180 @@
+# Quick Start
+
+This quickstart guide is designed to get you up and running with datacheck project in a snap. Along the way, you will
+better understand how to use the tool to check the differences before and after the migration, get a hands-on
+introduction to the App and API, and find more resources to deep-dive into.
+
+## Introduction
+
+Datacheck is a tool for checking the differences before and after the data migration that provides following features:
+
+- Count number of rows
+- Count number of distinct values for non-numeric columns
+- Support validation of full table or sampled table based on time-based filtering logic
+- Check if column names and types match
+- Compute min, max, avg, sum for numeric columns/min max for date columns
+- Count missing rate of columns
+- Check if there exist duplicate records given distinct key(s)
+- [WIP] Check the detailed differences
+
+## Installation
+
+Follow the steps below to install Report.
+
+1. (Optional) It is recommended to create a virtual environment using virtualenv so that problems of dependencies and
+   versions could be better addressed.
+
+   If you use [Anaconda](https://www.anaconda.com/), you could create a new conda environment
+
+    ```shell
+    conda create -n datacheck python=3.7
+    conda activate datacheck
+    ```
+
+   Else, use [virtualenv](https://virtualenv.pypa.io/en/latest/)
+    ```shell
+    python3 -m venv datacheck-env
+    cd datacheck-env
+    source datacheck-env/bin/activate
+    ```
+2. Get the repository from the remote
+
+   There are two options. If you have already followed security requirements, enabled multi-factor authentification and
+   provided SSH key, a git clone command suffices.
+    ```shell
+    git clone git@github.com:sparkle-apt/datacheck.git
+    ```
+   Otherwise, you can directly download the zip file and unzip locally.
+
+3. Change to the package directory
+    ```shell
+    cd datacheck
+    ```
+
+4. Install dependencies required by Report if they do not exist locally
+    ```shell
+    pip install -r requirements.txt
+    ```
+5. Install datacheck
+    ```shell
+    python setup.py install --user
+    ```
+
+## Getting Started
+
+### Create the configuration
+
+The configuration is used to tell the program which table should be checked and what check operations will be used.
+A simple example of a configuration is below. More detailed information is [here](./configuration.md).
+
+```json
+[
+  {
+    "target_table": {
+      "database": "vega",
+      "name": "red.raw_c_e_consumer_profile_change"
+    },
+    "source_table": {
+      "database": "redshift",
+      "name": "red.raw_c_e_consumer_profile_change"
+    },
+    "filter": {
+      "time_col": "par_process_date",
+      "start": "'2022-10-01'",
+      "end": "'2022-10-02'"
+    },
+    "ops": {
+      "check_column_type": {},
+      "count_row_num": {},
+      "count_distinct_num": {
+        "target_cols": [
+          "event_type",
+          "device_id"
+        ]
+      },
+      "compute_stats": {
+        "target_cols": [
+          "gateway_response",
+          "gdp_processed_datetime",
+          "event_type",
+          "event_info_correlation_id"
+        ],
+        "target_ops": [
+          "max",
+          "min",
+          "avg",
+          "sum"
+        ]
+      },
+      "count_missing_rate": {
+        "target_cols": [
+          "gateway_response",
+          "event_type"
+        ]
+      },
+      "check_duplicate": {
+        "target_cols": [
+          "gateway_response",
+          "event_type"
+        ]
+      }
+    }
+  }
+]
+
+```
+
+### Jupyterhub Solution API
+
+Please first follow general instructions to install datacheck Python package, then learn more in the the usage example
+below.
+
+```python
+from datacheck.connection import APTRedshiftConnector
+from datacheck.datachecker import DataChecker
+
+r = RedshiftHook(cluster='vega', okta_username='xxx@squareup.com')
+dc = DataChecker()
+vega_connector = APTRedshiftConnector(r)
+
+dc.register_connector(vega_connector, 'vega')
+
+# directly value the configuration or load the config like json file
+configs = [
+    {
+        "target_table": {
+            "database": "vega",
+            "name": "sandbox_analytics_au.jy_seon_processed"
+        },
+        "source_table": {
+            "database": "vega",
+            "name": "sandbox_analytics_au.jy_seon_processed"
+        },
+        "filter": {
+            "time_col": "par_process_date",
+            "start": "'2022-10-01'",
+            "end": "'2022-10-02'"
+        },
+        "ops": {}
+    },
+]
+
+# run with single thread
+df = dc.multi_check(configs=configs)
+
+# or, you can use multi coroutine to speed up by setting the param ``n_jobs>1``
+df = dc.multi_check(configs=config, n_jobs=2, retry=3, timeout=60.0)
+
+print(df.head())
+```
+
+### DDF Solution API
+
+You can use ddf and airflow if timed tasks are required.
+learn more in the
+companion [github](https://github.com/AfterpayTouch/data-datalake-pipeline-risk-modelling-ddf/tree/main/airflow/dags/data_validation)
+
+
+
+
+
