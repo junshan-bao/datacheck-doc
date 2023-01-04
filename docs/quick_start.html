@@ -12,11 +12,13 @@
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
+
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
         <script src="_static/design-tabs.js"></script>
@@ -25,11 +27,11 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Datacheck API" href="datacheck.html" />
-    <link rel="prev" title="Datacheck" href="index.html" /> 
+    <link rel="next" title="datacheck package" href="datacheck.html" />
+    <link rel="prev" title="Datacheck" href="index.html" />
 </head>
 
-<body class="wy-body-for-nav"> 
+<body class="wy-body-for-nav">
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
@@ -60,7 +62,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="datacheck.html">Datacheck API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datacheck.html">datacheck package</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
 <ul>
@@ -94,15 +96,15 @@
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-             
+
   <section id="quick-start">
-<h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline"></a></h1>
+<h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this heading"></a></h1>
 <p>This quickstart guide is designed to get you up and running with datacheck project in a snap. Along the way, you will
-better understand how to use the tool to check the differences before and after the migration, get a hands-on
+better understand how to use the tool to check consistency of data from two sources, get a hands-on
 introduction to the App and API, and find more resources to deep-dive into.</p>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
-<p>Datacheck is a tool for checking the differences before and after the data migration that provides following features:</p>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
+<p>Datacheck is a tool for checking consistency of data from two sources that provides following features:</p>
 <ul class="simple">
 <li><p>Count number of rows</p></li>
 <li><p>Count number of distinct values for non-numeric columns</p></li>
@@ -115,112 +117,112 @@ introduction to the App and API, and find more resources to deep-dive into.</p>
 </ul>
 </section>
 <section id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h2>
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h2>
 <p>Follow the steps below to install Report.</p>
 <ol class="arabic">
 <li><p>(Optional) It is recommended to create a virtual environment using virtualenv so that problems of dependencies and
 versions could be better addressed.</p>
 <p>If you use <a class="reference external" href="https://www.anaconda.com/">Anaconda</a>, you could create a new conda environment</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda create -n datacheck <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.7
-conda activate datacheck
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>datacheck<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.7
+conda<span class="w"> </span>activate<span class="w"> </span>datacheck
 </pre></div>
 </div>
 <p>Else, use <a class="reference external" href="https://virtualenv.pypa.io/en/latest/">virtualenv</a></p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3 -m venv datacheck-env
-<span class="nb">cd</span> datacheck-env
-<span class="nb">source</span> datacheck-env/bin/activate
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>datacheck-env
+<span class="nb">cd</span><span class="w"> </span>datacheck-env
+<span class="nb">source</span><span class="w"> </span>datacheck-env/bin/activate
 </pre></div>
 </div>
 </li>
 <li><p>Get the repository from the remote</p>
 <p>There are two options. If you have already followed security requirements, enabled multi-factor authentification and
 provided SSH key, a git clone command suffices.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git clone git@github.com:sparkle-apt/datacheck.git
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:sparkle-apt/datacheck.git
 </pre></div>
 </div>
 <p>Otherwise, you can directly download the zip file and unzip locally.</p>
 </li>
 <li><p>Change to the package directory</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> datacheck
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>datacheck
 </pre></div>
 </div>
 </li>
 <li><p>Install dependencies required by Report if they do not exist locally</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip install -r requirements.txt
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </pre></div>
 </div>
 </li>
 <li><p>Install datacheck</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python setup.py install --user
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>setup.py<span class="w"> </span>install<span class="w"> </span>--user
 </pre></div>
 </div>
 </li>
 </ol>
 </section>
 <section id="getting-started">
-<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline"></a></h2>
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading"></a></h2>
 <section id="create-the-configuration">
-<h3>Create the configuration<a class="headerlink" href="#create-the-configuration" title="Permalink to this headline"></a></h3>
+<h3>Create the configuration<a class="headerlink" href="#create-the-configuration" title="Permalink to this heading"></a></h3>
 <p>The configuration is used to tell the program which table should be checked and what check operations will be used.
 A simple example of a configuration is below. More detailed information is <a class="reference internal" href="configuration.html"><span class="doc std std-doc">here</span></a>.</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;target_table&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;database&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vega&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;red.raw_c_e_consumer_profile_change&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;source_table&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;database&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;redshift&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;red.raw_c_e_consumer_profile_change&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;time_col&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;par_process_date&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&#39;2022-10-01&#39;&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;end&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&#39;2022-10-02&#39;&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;ops&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;check_column_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;count_row_num&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;count_distinct_num&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;target_cols&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">          </span><span class="s2">&quot;event_type&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="s2">&quot;device_id&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">]</span><span class="w"></span>
-<span class="w">      </span><span class="p">},</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;compute_stats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;target_cols&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">          </span><span class="s2">&quot;gateway_response&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="s2">&quot;gdp_processed_datetime&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="s2">&quot;event_type&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="s2">&quot;event_info_correlation_id&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">],</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;target_ops&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">          </span><span class="s2">&quot;max&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="s2">&quot;min&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="s2">&quot;avg&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="s2">&quot;sum&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">]</span><span class="w"></span>
-<span class="w">      </span><span class="p">},</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;count_missing_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;target_cols&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">          </span><span class="s2">&quot;gateway_response&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="s2">&quot;event_type&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">]</span><span class="w"></span>
-<span class="w">      </span><span class="p">},</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;check_duplicate&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;target_cols&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">          </span><span class="s2">&quot;gateway_response&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="s2">&quot;event_type&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">]</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">]</span><span class="w"></span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;target_table&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;database&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vega&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;red.raw_c_e_consumer_profile_change&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;source_table&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;database&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;redshift&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;red.raw_c_e_consumer_profile_change&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;time_col&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;par_process_date&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&#39;2022-10-01&#39;&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;end&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&#39;2022-10-02&#39;&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;ops&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;check_column_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">      </span><span class="nt">&quot;count_row_num&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">      </span><span class="nt">&quot;count_distinct_num&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;target_cols&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="s2">&quot;event_type&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">&quot;device_id&quot;</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;compute_stats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;target_cols&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="s2">&quot;gateway_response&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">&quot;gdp_processed_datetime&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">&quot;event_type&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">&quot;event_info_correlation_id&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;target_ops&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="s2">&quot;max&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">&quot;min&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">&quot;avg&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">&quot;sum&quot;</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;count_missing_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;target_cols&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="s2">&quot;gateway_response&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">&quot;event_type&quot;</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;check_duplicate&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;target_cols&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="s2">&quot;gateway_response&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">&quot;event_type&quot;</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 </section>
 <section id="jupyterhub-solution-api">
-<h3>Jupyterhub Solution API<a class="headerlink" href="#jupyterhub-solution-api" title="Permalink to this headline"></a></h3>
+<h3>Jupyterhub Solution API<a class="headerlink" href="#jupyterhub-solution-api" title="Permalink to this heading"></a></h3>
 <p>Please first follow general instructions to install datacheck Python package, then learn more in the the usage example
 below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datacheck.connection</span> <span class="kn">import</span> <span class="n">APTRedshiftConnector</span>
@@ -263,10 +265,10 @@ below.</p>
 </div>
 </section>
 <section id="ddf-solution-api">
-<h3>DDF Solution API<a class="headerlink" href="#ddf-solution-api" title="Permalink to this headline"></a></h3>
+<h3>DDF Solution API<a class="headerlink" href="#ddf-solution-api" title="Permalink to this heading"></a></h3>
 <p>You can use ddf and airflow if timed tasks are required.
 learn more in the
-companion <a class="reference external" href="https://github.com/AfterpayTouch/data-datalake-pipeline-risk-modelling-ddf/tree/main/airflow/dags/data_validation">github</a></p>
+companion <a class="reference external" href="https://github.com/AfterpayTouch/data-datalake-pipeline-risk-modelling-ddf/tree/main/airflow/dags/data_validation_once">github</a></p>
 </section>
 </section>
 </section>
@@ -276,7 +278,7 @@ companion <a class="reference external" href="https://github.com/AfterpayTouch/d
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="Datacheck" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="datacheck.html" class="btn btn-neutral float-right" title="Datacheck API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="datacheck.html" class="btn btn-neutral float-right" title="datacheck package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -288,7 +290,7 @@ companion <a class="reference external" href="https://github.com/AfterpayTouch/d
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
+
 
 </footer>
         </div>
@@ -299,7 +301,7 @@ companion <a class="reference external" href="https://github.com/AfterpayTouch/d
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
 
 </body>
 </html>

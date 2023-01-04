@@ -1,12 +1,12 @@
 # Quick Start
 
 This quickstart guide is designed to get you up and running with datacheck project in a snap. Along the way, you will
-better understand how to use the tool to check the differences before and after the migration, get a hands-on
+better understand how to use the tool to check consistency of data from two sources, get a hands-on
 introduction to the App and API, and find more resources to deep-dive into.
 
 ## Introduction
 
-Datacheck is a tool for checking the differences before and after the data migration that provides following features:
+Datacheck is a tool for checking consistency of data from two sources that provides following features:
 
 - Count number of rows
 - Count number of distinct values for non-numeric columns
@@ -172,7 +172,7 @@ print(df.head())
 
 You can use ddf and airflow if timed tasks are required.
 learn more in the
-companion [github](https://github.com/AfterpayTouch/data-datalake-pipeline-risk-modelling-ddf/tree/main/airflow/dags/data_validation)
+companion [github](https://github.com/AfterpayTouch/data-datalake-pipeline-risk-modelling-ddf/tree/main/airflow/dags/data_validation_once)
 
 
 

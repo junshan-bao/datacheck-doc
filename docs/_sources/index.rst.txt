@@ -6,7 +6,7 @@
 Datacheck |version|
 ============================================
 
-Datacheck is a tool for checking the differences before and after the data migration that provides following features:
+Datacheck is a tool for checking consistency of data from two sources that provides following features:
 
 * Count number of rows
 * Count number of distinct values for non-numeric columns

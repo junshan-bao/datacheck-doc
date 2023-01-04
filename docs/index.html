@@ -12,11 +12,13 @@
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
+
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
         <script src="_static/design-tabs.js"></script>
@@ -25,10 +27,10 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Quick Start" href="quick_start.html" /> 
+    <link rel="next" title="Quick Start" href="quick_start.html" />
 </head>
 
-<body class="wy-body-for-nav"> 
+<body class="wy-body-for-nav">
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
@@ -49,7 +51,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="datacheck.html">Datacheck API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datacheck.html">datacheck package</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
 <ul>
@@ -83,10 +85,10 @@
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-             
+
   <section id="datacheck-version">
-<h1>Datacheck <a class="headerlink" href="#datacheck-version" title="Permalink to this headline"></a></h1>
-<p>Datacheck is a tool for checking the differences before and after the data migration that provides following features:</p>
+<h1>Datacheck <a class="headerlink" href="#datacheck-version" title="Permalink to this heading"></a></h1>
+<p>Datacheck is a tool for checking consistency of data from two sources that provides following features:</p>
 <ul class="simple">
 <li><p>Count number of rows</p></li>
 <li><p>Count number of distinct values for non-numeric columns</p></li>
@@ -116,13 +118,100 @@
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="datacheck.html">Datacheck API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="datacheck.html#module-datacheck.async_utils">datacheck.async_utils module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datacheck.html">datacheck package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="datacheck.html#module-datacheck.async_utils">datacheck.async_utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datacheck.html#datacheck.async_utils.ThreadPool"><code class="docutils literal notranslate"><span class="pre">ThreadPool</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.async_utils.ThreadPool.run"><code class="docutils literal notranslate"><span class="pre">ThreadPool.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="datacheck.html#datacheck.async_utils.ThreadWorker"><code class="docutils literal notranslate"><span class="pre">ThreadWorker</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datacheck.html#datacheck.async_utils.in_notebook"><code class="docutils literal notranslate"><span class="pre">in_notebook()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datacheck.html#datacheck.async_utils.run_with_coro"><code class="docutils literal notranslate"><span class="pre">run_with_coro()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="datacheck.html#module-datacheck.base">datacheck.base module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datacheck.html#module-datacheck.connection">datacheck.connection module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datacheck.html#module-datacheck.datachecker">datacheck.datachecker module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datacheck.html#module-datacheck.sql_generator">datacheck.sql_generator module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datacheck.html#module-datacheck.utils">datacheck.utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datacheck.html#module-datacheck.connection">datacheck.connection module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datacheck.html#datacheck.connection.APTRedshiftConnector"><code class="docutils literal notranslate"><span class="pre">APTRedshiftConnector</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.connection.APTRedshiftConnector.database"><code class="docutils literal notranslate"><span class="pre">APTRedshiftConnector.database</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.connection.APTRedshiftConnector.get_pandas_df"><code class="docutils literal notranslate"><span class="pre">APTRedshiftConnector.get_pandas_df()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.connection.APTRedshiftConnector.hook"><code class="docutils literal notranslate"><span class="pre">APTRedshiftConnector.hook</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.connection.APTRedshiftConnector.run"><code class="docutils literal notranslate"><span class="pre">APTRedshiftConnector.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="datacheck.html#datacheck.connection.AirflowConnector"><code class="docutils literal notranslate"><span class="pre">AirflowConnector</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.connection.AirflowConnector.conn_id"><code class="docutils literal notranslate"><span class="pre">AirflowConnector.conn_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.connection.AirflowConnector.connection"><code class="docutils literal notranslate"><span class="pre">AirflowConnector.connection</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.connection.AirflowConnector.database"><code class="docutils literal notranslate"><span class="pre">AirflowConnector.database</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.connection.AirflowConnector.get_pandas_df"><code class="docutils literal notranslate"><span class="pre">AirflowConnector.get_pandas_df()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.connection.AirflowConnector.hook"><code class="docutils literal notranslate"><span class="pre">AirflowConnector.hook</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.connection.AirflowConnector.run"><code class="docutils literal notranslate"><span class="pre">AirflowConnector.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="datacheck.html#datacheck.connection.Connector"><code class="docutils literal notranslate"><span class="pre">Connector</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.connection.Connector.get_pandas_df"><code class="docutils literal notranslate"><span class="pre">Connector.get_pandas_df()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.connection.Connector.run"><code class="docutils literal notranslate"><span class="pre">Connector.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datacheck.html#module-datacheck.datachecker">datacheck.datachecker module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datacheck.html#datacheck.datachecker.DataChecker"><code class="docutils literal notranslate"><span class="pre">DataChecker</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.datachecker.DataChecker.check"><code class="docutils literal notranslate"><span class="pre">DataChecker.check()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.datachecker.DataChecker.default_ops"><code class="docutils literal notranslate"><span class="pre">DataChecker.default_ops</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.datachecker.DataChecker.get_connector"><code class="docutils literal notranslate"><span class="pre">DataChecker.get_connector()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.datachecker.DataChecker.multi_check"><code class="docutils literal notranslate"><span class="pre">DataChecker.multi_check()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.datachecker.DataChecker.none_dataframe_with_time"><code class="docutils literal notranslate"><span class="pre">DataChecker.none_dataframe_with_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.datachecker.DataChecker.register_connector"><code class="docutils literal notranslate"><span class="pre">DataChecker.register_connector()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.datachecker.DataChecker.supported_database"><code class="docutils literal notranslate"><span class="pre">DataChecker.supported_database</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datacheck.html#module-datacheck.sql_generator">datacheck.sql_generator module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datacheck.html#datacheck.sql_generator.CheckDuplicate"><code class="docutils literal notranslate"><span class="pre">CheckDuplicate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.sql_generator.CheckDuplicate.generate"><code class="docutils literal notranslate"><span class="pre">CheckDuplicate.generate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="datacheck.html#datacheck.sql_generator.ComputeStats"><code class="docutils literal notranslate"><span class="pre">ComputeStats</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.sql_generator.ComputeStats.generate"><code class="docutils literal notranslate"><span class="pre">ComputeStats.generate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="datacheck.html#datacheck.sql_generator.CountDistinctNum"><code class="docutils literal notranslate"><span class="pre">CountDistinctNum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.sql_generator.CountDistinctNum.generate"><code class="docutils literal notranslate"><span class="pre">CountDistinctNum.generate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="datacheck.html#datacheck.sql_generator.CountMissingRate"><code class="docutils literal notranslate"><span class="pre">CountMissingRate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.sql_generator.CountMissingRate.generate"><code class="docutils literal notranslate"><span class="pre">CountMissingRate.generate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="datacheck.html#datacheck.sql_generator.CountRowNum"><code class="docutils literal notranslate"><span class="pre">CountRowNum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.sql_generator.CountRowNum.generate"><code class="docutils literal notranslate"><span class="pre">CountRowNum.generate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="datacheck.html#datacheck.sql_generator.CreateFilteredTmpTable"><code class="docutils literal notranslate"><span class="pre">CreateFilteredTmpTable</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.sql_generator.CreateFilteredTmpTable.generate"><code class="docutils literal notranslate"><span class="pre">CreateFilteredTmpTable.generate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="datacheck.html#datacheck.sql_generator.SqlGenerator"><code class="docutils literal notranslate"><span class="pre">SqlGenerator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.sql_generator.SqlGenerator.filter_col"><code class="docutils literal notranslate"><span class="pre">SqlGenerator.filter_col()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.sql_generator.SqlGenerator.generate"><code class="docutils literal notranslate"><span class="pre">SqlGenerator.generate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.sql_generator.SqlGenerator.name"><code class="docutils literal notranslate"><span class="pre">SqlGenerator.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.sql_generator.SqlGenerator.sql_template"><code class="docutils literal notranslate"><span class="pre">SqlGenerator.sql_template</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="datacheck.html#datacheck.sql_generator.SqlGenerator.sql_template_root"><code class="docutils literal notranslate"><span class="pre">SqlGenerator.sql_template_root</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="datacheck.html#datacheck.sql_generator.get_sql_generator_by_name"><code class="docutils literal notranslate"><span class="pre">get_sql_generator_by_name()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datacheck.html#module-datacheck.utils">datacheck.utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datacheck.html#datacheck.utils.classify_column_type"><code class="docutils literal notranslate"><span class="pre">classify_column_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datacheck.html#datacheck.utils.combine_sql_script"><code class="docutils literal notranslate"><span class="pre">combine_sql_script()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datacheck.html#datacheck.utils.df_equals"><code class="docutils literal notranslate"><span class="pre">df_equals()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datacheck.html#datacheck.utils.generate_sql_from_template"><code class="docutils literal notranslate"><span class="pre">generate_sql_from_template()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datacheck.html#datacheck.utils.generate_union_all_sql_script"><code class="docutils literal notranslate"><span class="pre">generate_union_all_sql_script()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="datacheck.html#datacheck.utils.load_json"><code class="docutils literal notranslate"><span class="pre">load_json()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -161,7 +250,7 @@
 </div>
 </section>
 <section id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline"></a></h1>
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
@@ -185,7 +274,7 @@
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
+
 
 </footer>
         </div>
@@ -196,7 +285,7 @@
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
 
 </body>
 </html>
